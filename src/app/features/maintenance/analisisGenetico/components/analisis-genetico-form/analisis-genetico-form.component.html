@@ -1,0 +1,43 @@
+<div class="p-6">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Análisis Genético</mat-card-title>
+        <mat-card-subtitle>Ingrese 6 SNPs para análisis</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form (ngSubmit)="analyze()" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <mat-form-field appearance="outline" *ngFor="let key of objectKeys(datos); let i = index">
+              <mat-label>SNP {{ i + 1 }}</mat-label>
+              <input matInput [(ngModel)]="datos[key]" [name]="key" placeholder="Ej: rs1001" />
+            </mat-form-field>
+          </div>
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+            <mat-spinner *ngIf="loading" diameter="20" class="inline-block"></mat-spinner>
+            <span *ngIf="!loading">Analizar</span>
+          </button>
+        </form>
+  
+        <!-- Verificación si 'result' tiene datos -->
+        <div *ngIf="hasResults()" class="mt-6">
+            <mat-divider class="my-4"></mat-divider>
+            <h3 class="mb-2 font-medium">Porcentaje de ascendencia:</h3>
+          
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <mat-form-field appearance="outline" *ngFor="let key of objectKeys(result.porcentaje_ascendencia); let i = index">
+                <mat-label>{{ key | titlecase }}</mat-label>
+                <input matInput [value]="result.porcentaje_ascendencia[key] + '%'" readonly />
+              </mat-form-field>
+            </div>
+          </div>
+          
+        <!-- Si no hay resultados -->
+        <div *ngIf="!hasResults()">
+          <p>No se encontraron resultados.</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,40 @@
+@for (daily of dailyPlanning(); track $index) {
+  <div class="flex flex-col gap-y-2" [style.width]="tableWidth()">
+    <div class="flex w-full card justify-center gap-x-4 py-2">
+      <app-custom-input
+        class="flex-1 max-w-[20%]"
+        label="Total"
+        mask="number"
+        [value]="daily.planning.toString()"
+        [disabled]="true" />
+      <app-custom-input
+        class="flex-1 max-w-[20%]"
+        label="Ejecucion"
+        mask="number"
+        [value]="daily.execution.toString()"
+        [disabled]="true" />
+      <app-custom-input
+        class="flex-1 max-w-[20%]"
+        label="Diferencia"
+        mask="number"
+        [value]="daily.difference.toString()"
+        [disabled]="true" />
+    </div>
+    <app-custom-table
+      class="flex w-full"
+      [title]="daily.date | date: 'fullDate'"
+      [elements]="daily.data"
+      [columns]="columns"
+      [paginator]="{ currentPage: 1, pageSize: daily.data.length, totalCount: daily.data.length, totalPages: 1 }"
+      [showExportButton]="true"
+      [showCreateButton]="false"
+      [showSearch]="false"
+      [rowClickBehaviour]="getSelectedBehaviour()"
+      (rowClickCustomBehaviour)="getSelected.emit($event)"
+      [createElementBehaviour]="createBehaviour()" />
+  </div>
+} @empty {
+  <div class="flex w-full justify-center">
+    <span class="text-xl italic">Sin data</span>
+  </div>
+}

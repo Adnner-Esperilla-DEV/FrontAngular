@@ -1,0 +1,54 @@
+@import "~simplebar/dist/simplebar.css";
+@import "~highlight.js/styles/androidstudio.css";
+@import "./@vex/styles/core";
+
+body {
+  --sidenav-toolbar-height: 64px;
+  --vex-toolbar-height: 0px !important;
+  --vex-footer-height: 0px !important;
+  --mat-form-field-container-vertical-padding: 10px !important;
+  --mat-form-field-container-height: calc(var(--mat-form-field-container-vertical-padding) * 3 + 8px) !important;
+  --mdc-outlined-text-field-disabled-input-text-color: rgba($color: black, $alpha: 1) !important;
+  --mdc-outlined-text-field-disabled-label-text-color: rgba($color: black, $alpha: 1) !important;
+  --mdc-outlined-text-field-input-text-color: rgba($color: black, $alpha: 1) !important;
+  --mdc-outlined-text-field-label-text-color: rgba($color: black, $alpha: 1) !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+
+  mat-form-field {
+    .mat-mdc-form-field-icon-suffix {
+      pointer-events: none !important;
+
+      button {
+        display: none !important;
+      }
+    }
+  }
+}
+
+mat-form-field {
+  label.mat-mdc-floating-label {
+    pointer-events: none !important;
+  }
+
+  .mdc-notched-outline__notch {
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  &.mat-form-field-disabled,
+  &.mat-mdc-form-field-disabled {
+    .mat-mdc-form-field-icon-suffix {
+      display: none !important;
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba($color: gray, $alpha: 0.4) !important;
+    }
+  }
+}

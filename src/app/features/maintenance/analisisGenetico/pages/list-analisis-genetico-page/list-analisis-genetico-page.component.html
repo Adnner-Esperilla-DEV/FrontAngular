@@ -1,0 +1,37 @@
+<app-custom-layout 
+title="Analisis Genético"
+[showActionButtons]="false">
+  <!-- Header section -->
+  <div header class="flex items-center justify-between p-4 bg-white shadow-sm">
+    <h1 class="text-2xl font-semibold text-gray-800">Análisis Genético</h1>
+  </div>
+
+  <!-- Content section -->
+  <div content class="p-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Info card -->
+      <mat-card appearance="outlined" class="mb-6">
+        <mat-card-content>
+          <p class="text-gray-600">
+            Ingrese los datos genéticos para realizar el análisis de ascendencia. Los resultados se mostrarán
+            automáticamente después del procesamiento.
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Main form component -->
+      <app-analisis-genetico-form [datos]="initialData" class="block" /> <!-- Cambiar (usamos objeto, no función) -->
+    </div>
+  </div>
+
+  <!-- Footer section (optional) -->
+  <div footer class="p-4 text-center text-sm text-gray-500 border-t">
+    <p>Sistema de Análisis Genético UTEC - © 2025</p>
+    <p>Adnner Esperilla</p>
+    <p>Italo Flores</p>
+    <p>Geraldine Quispe</p>
+    <p>Roger Reategui</p>
+
+  </div>
+</app-custom-layout>
+

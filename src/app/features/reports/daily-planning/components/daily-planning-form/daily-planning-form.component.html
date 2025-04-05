@@ -1,0 +1,17 @@
+<app-custom-layout
+  customClasses="bg-transparent shadow-none"
+  title="Clientes"
+  [showActionButtons]="false"
+  [showBreadcrumbs]="true"
+  [showToolbar]="true"
+  [(editViewMode)]="editViewMode">
+  <div #fullscreenElement class="flex flex-col gap-y-5 bg-[#f3f4f6]">
+    <div class="flex w-full card py-4 gap-x-2 justify-center">
+      <app-custom-date-input class="flex-1 max-w-[300px]" label="Desde" controlName="date" [form]="form" />
+      <button mat-icon-button (click)="onToggleFullScreen()">
+        <mat-icon [svgIcon]="isFullscreen() ? 'mat:fullscreen_exit' : 'mat:fullscreen'" matTooltip="Alternar vista" />
+      </button>
+    </div>
+    <app-daily-planning-list class="flex w-full gap-x-4" [date]="date()" />
+  </div>
+</app-custom-layout>

@@ -1,0 +1,20 @@
+.table-container {
+  position: relative; // Necesario para que position: sticky funcione dentro
+  max-height: 100%;   // Ajusta esto según tu layout
+  overflow: auto;
+}
+
+.pagination-container {
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  left: 0;  // Para asegurarte que se expande en toda la fila
+  background: white;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+  border-top: 1px solid #ddd;
+}
